@@ -9,9 +9,9 @@ touch /tmp/.aws/config
 export HOME="/tmp"
 export AWS_CONFIG_FILE="/tmp/.aws/config"
 echo "running update index"
-arduino-cli core update-index --config-file /opt/bin/arduino-cli.yaml -v
+arduino-cli core update-index --config-file /opt/bin/arduino-cli.yaml
 echo "running install esp8266"
-arduino-cli core install esp8266:esp8266 --config-file /opt/bin/arduino-cli.yaml -v
+arduino-cli core install esp8266:esp8266 --config-file /opt/bin/arduino-cli.yaml
 # Send initialization error to Lambda API
 sendInitError () {
   ERROR_MESSAGE=$1
