@@ -8,13 +8,16 @@ mkdir -p /tmp/.aws
 touch /tmp/.aws/config
 export HOME="/tmp"
 export AWS_CONFIG_FILE="/tmp/.aws/config"
-echo "running update index"
+echo "running core update index"
 arduino-cli core update-index --config-file /opt/bin/arduino-cli.yaml
 echo "running install esp8266"
 arduino-cli core install esp8266:esp8266 --config-file /opt/bin/arduino-cli.yaml
+echo "running lib update-index"
 arduino-cli lib update-index
+echo "installing libs"
 arduino-cli lib install jsonlib
 arduino-cli lib install WiFiManager
+arduino-cli lib install ArduinoWebsockets
 
 # Send initialization error to Lambda API
 sendInitError () {
